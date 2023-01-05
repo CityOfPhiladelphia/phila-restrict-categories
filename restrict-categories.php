@@ -31,12 +31,12 @@ class RestrictCategories{
 	public function __construct(){
 		// Make sure we are in the admin before proceeding.
 		if ( is_admin() ) {
-			$post_type = ( isset( $_GET['post_type'] ) ) ? $_GET['post_type'] : false;
+			$post_type = ( isset( $_GET['post_type'] ) ) ? $_GET['post_type'] : null;
 
 				// If the page is the Posts screen, do our thing, otherwise chill
-			if ( isset( $_GET['post_type'] ) )
-				add_action( 'admin_init', array( &$this, 'posts' ) );
-
+			// if ($post_type == false || $post_type == 'post') {
+				add_action('admin_init', array(&$this, 'posts'));
+			// }
 			// Build options and settings pages.
 			add_action( 'admin_init', array( &$this, 'init' ) );
 			add_action( 'admin_menu', array( &$this, 'add_admin' ) );
