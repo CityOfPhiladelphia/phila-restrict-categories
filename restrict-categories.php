@@ -31,11 +31,11 @@ class RestrictCategories{
 	public function __construct(){
 		// Make sure we are in the admin before proceeding.
 		if ( is_admin() ) {
-			$post_type = ( isset( $_GET['post_type'] ) ) ? $_GET['post_type'] : false;
-
-				// If the page is the Posts screen, do our thing, otherwise chill
-			if ( $post_type == false || $post_type == 'post' )
-				add_action( 'admin_init', array( &$this, 'posts' ) );
+			// $post_type = ( isset( $_GET['post_type'] ) ) ? $_GET['post_type'] : false;
+			// If the page is the Posts screen, do our thing, otherwise chill
+			// if ( isset( $_GET['post_type'] ) || $post_type == false )
+			//applies restricting categories to all screens
+			add_action( 'admin_init', array( &$this, 'posts' ) );
 
 			// Build options and settings pages.
 			add_action( 'admin_init', array( &$this, 'init' ) );
