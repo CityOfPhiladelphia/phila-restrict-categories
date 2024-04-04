@@ -537,7 +537,8 @@ class RestrictCategories{
 			add_filter( 'pre_get_posts', array( &$this, 'posts_query' ) );
 
 		// Allowed pages for term exclusions
-		$pages = array( 'edit.php', 'post-new.php' );
+    		//KD edit - 4/3/2024 - added 'post.php' to ensure the category filter is applied to the post edit page
+		$pages = array( 'edit.php', 'post-new.php', 'post.php' );
 
 		// Make sure to exclude terms from $pages array as well as the Category screen
 		if ( in_array( $pagenow, $pages ) || ( $pagenow == 'edit-tags.php' && $_GET['taxonomy'] == 'category' ) || ( defined ( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) )
